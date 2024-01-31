@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Resource Web Application</title>
+    <link rel = "stylesheet" href="style.css">
+</head>
+<body>
+    <div class="full-page">
+        <div class="navbar">
+             <div>
+                <a href="assignment.html">HR Application</a>
+
+             </div>
+             <nav>
+                <ul id="MenuItems">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Employees</a></li>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><button class="loginbtn" onclick="document.getElementById('login-form').style.display='block'"
+                        style="width: auto;">Login</button></li>
+                </ul>
+             </nav>
+             
+        </div>
+        <div id="login-form" class="login-page">
+            <div class="form-box">
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" onclick="login()" class="toggle-btn">Sign In</button>
+                    <button type="button" onclick="register()" class="toggle-btn">Register</button>
+
+                </div>
+                <form id="login" class="input-group-login">
+                    <input type="email" class="input-field" id="loginEmail" placeholder="Email" required>
+                    <input type="password" class="input-field" id="loginPassword" placeholder="Password" required>
+                    <input type="checkbox" class="check-box"><span>Remember me</span>
+                    <button type="submit" class="submit-btn" id="loginBtn">Log In</button>
+                </form>
+        
+                <form id="employee-registration" class="input-group-register">
+                    <div class="input-group">
+                        <input type="text" class="input-field" id="firstName" placeholder="First Name" required>
+                        <input type="text" class="input-field" id="lastName" placeholder="Last Name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" class="input-field" id="email" placeholder="Email" required>
+                        <input type="text" class="input-field" id="phoneNumber" placeholder="Phone Number" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="input-field" id="address" placeholder="Address" required>
+                        <input type="text" class="input-field" id="jobTitle" placeholder="Job Title" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" class="input-field" id="password" placeholder="Password" required>
+                        <input type="password" class="input-field" id="confirmPassword" placeholder="Confirm Password" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="date" class="input-field" id="dateOfBirth" placeholder="Date of Birth" required>
+                    </div>
+                    <input type="checkbox" class="check-box" id="termsCheckbox"><span>Agree to Terms and Conditions</span>
+                    <button type="submit" class="submit-btn"  id="registerEmployeeBtn">Register Employee</button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var x =document.getElementById('login');
+        var y =  document.getElementById('employee-registration');
+        var z = document.getElementById('btn');
+
+        function register(){
+            x.style.left='-400px';
+            y.style.left='50px';
+            z.style.left='110px';
+        }
+
+        function login(){
+            x.style.left='50px';
+            y.style.left='450px';
+            z.style.left='0px';
+        }
+
+    </script>
+    <script>
+        document.getElementById('employee-registration').addEventListener('submit', function(event) {
+            // Check if passwords match
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+    
+            if (password !== confirmPassword) {
+                alert("Passwords do not match");
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+    
+            // Validate email using regex
+            var email = document.getElementById('email').value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+            if (!emailRegex.test(email)) {
+                alert("Invalid email format");
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+    
+            // Validate phone using regex
+            var phone = document.getElementById('phoneNumber').value;
+            var phoneRegex = /^\d{10}$/;
+    
+            if (!phoneRegex.test(phone)) {
+                alert("Invalid phone number format");
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+    
+            // Check if the chosen date is less than today
+            var chosenDate = new Date(document.getElementById('dateOfBirth').value);
+            var today = new Date();
+    
+            if (chosenDate >= today) {
+                alert("Date of birth must be before today");
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+    
+            // Validate checkbox
+            var checkbox = document.getElementById('termsCheckbox');
+    
+            if (!checkbox.checked) {
+                alert("Please agree to the Terms and Conditions");
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+    
+            //Validate minimum length for first name, last name, address, job title
+            var firstName = document.getElementById('firstName').value;
+            var lastName = document.getElementById('lastName').value;
+            var address = document.getElementById('address').value;
+            var jobTitle = document.getElementById('jobTitle').value;
+    
+            if (firstName.length < 5 || lastName.length < 5 || address.length < 5 || jobTitle.length < 5) {
+                alert("First name, last name, address, and job title must be at least 5 characters");
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+    
+            // Validate minimum length for password
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters");
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+
+            // All fields are validated, display a success message
+            alert("Registration Successful!");
+
+            // Clear the form fields
+            document.getElementById('firstName').value = '';
+            document.getElementById('lastName').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('phoneNumber').value = '';
+            document.getElementById('address').value = '';
+            document.getElementById('jobTitle').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('confirmPassword').value = '';
+            document.getElementById('dateOfBirth').value = '';
+            document.getElementById('termsCheckbox').checked = false;
+
+            event.preventDefault(); // Prevent form submission
+
+        });
+    </script>
+    
+    <script>
+        document.getElementById('login').addEventListener('submit', function(event) {
+            var email = document.getElementById('loginEmail').value;
+            var password = document.getElementById('loginPassword').value;
+    
+            //Validate email using regex
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+            if (!emailRegex.test(email)) {
+                alert("Invalid email format");
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+    
+            // Validate minimum length for password
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters");
+                event.preventDefault(); // Prevent form submission
+                return;
+            }
+    
+            // All fields are validated,  display a success message
+            alert("Login Successful!");
+
+            // Clear the form fields
+            document.getElementById('loginEmail').value = '';
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('rememberMeCheckbox').checked = false;
+
+            event.preventDefault(); // Prevent form submission
+        });
+    </script>
+    
+    <!-- <script>
+        var modal = document.getElementById('login-form');
+        window.onclick = function(event){
+            if (event.target == modal){
+                modal.style.display = "none";
+            }
+        }
+    </script> -->
+</body>
+</html>
