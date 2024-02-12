@@ -3,11 +3,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
+
 .full-page{
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(images/hr.jpg);
+    /* background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(images/hr.jpg); */
     background-position: center;
     background-size: cover;
     position: absolute;
@@ -21,6 +23,7 @@
     padding-right: 30px;
     padding-top: 10px;
 }
+
 nav{
     flex:1;
     text-align: right;
@@ -37,13 +40,13 @@ nav ul li{
 nav ul li a{
     text-decoration: none;
     font-size: 20px;
-    color: white;
+    color: black;
     font-family: sans-serif;
 }
 
 nav ul li button{
     font-size: 20px;
-    color: white;
+    color: black;
     outline: none;
     border: none;
     background: transparent;
@@ -177,3 +180,83 @@ span{
     color: white;
     font-size: 15;
 }
+
+/*  HERO AND HEADER*/
+
+.container {
+    width: 1200px;
+    max-width: 90%;
+    margin-top: -40px;
+    margin-left: 60px;
+    padding: 50px 0;
+  }
+  a{
+    text-decoration: none;
+  }
+
+  .hero {
+    margin-top: -100px;
+    display: flex;
+    align-items: center;
+    margin-bottom: -80px;
+  }
+  
+  .hero section {
+    flex: 1;
+  }
+  .hero-left h1 {
+    font-weight: 600;
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: #070439;
+  }
+  
+  .hero-left p {
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    color: #444444;
+  }
+  
+  .hero-left {
+    padding-right: 40px;
+  }
+  .hero-left a {
+    padding: 15px 30px;
+    background: #397ef6;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.3s all ease;
+    border-radius: 20px;
+  }
+  .hero-left a:hover{
+    background-color: #070439;
+  }
+  .right {
+    padding-top: 50px;
+  }
+  
+  .right img {
+    width: 100%;
+    max-width: 465px;
+  }
+  
+  
+    nav li {
+        list-style: none;
+        margin: 0 8px 
+    }
+
+    .hero .left{
+        flex-direction: column;  
+        text-align: center; 
+    }
+
+    .hero .right {
+        padding-bottom: 5rem; 
+    }
+  

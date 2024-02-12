@@ -9,22 +9,45 @@
 <body>
     <div class="full-page">
         <div class="navbar">
-             <div>
-                <a href="assignment.html">HR Application</a>
-
-             </div>
-             <nav>
+            <div>
+                <a href="#" onclick="showHomeContent()">HR Application</a>
+            </div>
+            <nav>
                 <ul id="MenuItems">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Employees</a></li>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><button class="loginbtn" onclick="document.getElementById('login-form').style.display='block'"
-                        style="width: auto;">Login</button></li>
+                    <li id="homeLink"><button onclick="showHomeContent()">Home</button></li>
+                    <li><button onclick="hideHomeContent()">Employees</button></li>
+                    <li><button>About us</button></li>
+                    <li><button>Contact</button></li>
+            
+                    <li><button class="loginbtn" onclick="showLoginForm()" style="width: auto;">Login</button></li>
                 </ul>
-             </nav>
-             
+
+            </nav>     
         </div>
+
+        <div id="homeContent" style="display:block;">
+            <br /><br/><br /><br/>
+            <br /><br/>
+            <div class="text-center">
+                <header class="container">
+                    <div class="hero">
+                        <section class="hero-left">
+                            <h1>
+                                Elevate Your HRM Processes with Precision. Streamline Your Workforce Data Seamlessly.
+                            </h1>
+                            <p>
+                                Enhance your HRM practices with precision. Efficiently record, categorize, and visualize your workforce data seamlessly.
+                            </p>                            
+                            <button type="submit" class="submit-btn" onclick="showLoginForm()" >Get Started</button>
+                        </section>
+                        <section class="right">
+                            <img src="https://fjwp.s3.amazonaws.com/blog/wp-content/uploads/2019/11/29144739/HR-career.png" alt="Hero illustration" />
+                        </section>
+                    </div>
+                </header>
+            </div>
+        </div>
+
         <div id="login-form" class="login-page">
             <div class="form-box">
                 <div class="button-box">
@@ -67,7 +90,24 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        function showHomeContent() {
+            document.getElementById('homeContent').style.display = 'block';
+            document.getElementById('login-form').style.display = 'none';
+        }
 
+        function showLoginForm() {
+            document.getElementById('homeContent').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        }
+
+        function hideHomeContent() {
+            document.getElementById('homeContent').style.display = 'none';
+            document.getElementById('login-form').style.display = 'none';
+        }
+        document.addEventListener('DOMContentLoaded', showHomeContent);
+    </script>
     <script>
         var x =document.getElementById('login');
         var y =  document.getElementById('employee-registration');
@@ -208,14 +248,5 @@
             event.preventDefault(); // Prevent form submission
         });
     </script>
-    
-    <!-- <script>
-        var modal = document.getElementById('login-form');
-        window.onclick = function(event){
-            if (event.target == modal){
-                modal.style.display = "none";
-            }
-        }
-    </script> -->
 </body>
 </html>
